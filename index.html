@@ -883,7 +883,7 @@ function renderProducts() {
     }
     return true;
   });
-  const itemsPerPage = 6;
+  const itemsPerPage = 8;
   const totalPages = Math.ceil(filtered.length / itemsPerPage);
   
   // Ensure currentPage is valid
@@ -965,7 +965,7 @@ function changePage(n) {
     }
     return true;
   });
-  const totalPages = Math.ceil(filtered.length / 6);
+  const totalPages = Math.ceil(filtered.length / 8);
   if(n < 1 || n > totalPages) return;
   currentPage = n;
   renderProducts();
