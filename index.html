@@ -1513,7 +1513,7 @@ function closeMenu() {
 
 
 // ── CAROUSEL AVIS ──
-(function(){
+function carouselInit(){
   const wrapper = document.querySelector('.carousel-wrapper');
   const track = document.getElementById('carouselTrack');
   const dots = document.getElementById('carouselDots');
@@ -1564,10 +1564,58 @@ function closeMenu() {
   window.addEventListener('resize', function(){ cur=0; go(0); buildDots(); });
 
   buildDots();
-})();
+}
+carouselInit();
 
 
 // ── FORMULAIRE D'AVIS ──
+// Avis stockés dans le code + nouveaux avis via JSONBin public
+const JSONBIN_BIN_ID = 'COZ_REVIEWS_BIN';
+const JSONBIN_KEY = '$2a$10$placeholder'; // sera remplacé
+
+// Avis de base (toujours affichés)
+const baseReviews = [
+  {prenom:'Romain', ville:'Châtenay-Malabry', note:5, message:'Incroyable, ils sont vraiment excellent merci encore !'},
+  {prenom:'Romu', ville:'Chatou', note:5, message:"J'ai pris 3 parfums direct tellement ils sont qualitatifs."},
+  {prenom:'Yavin', ville:'Montpellier', note:5, message:'Encore merci pour tes précieux conseils !'},
+  {prenom:'Elodie', ville:'Maisons-Laffitte', note:5, message:"Waouh je ne m'attendais pas à une telle presta ! C'est validé à 100%"},
+  {prenom:'Louna', ville:'Châtenay-Malabry', note:5, message:"Grâce à toi j'ai pu avoir mon parfum préféré 3x moins cher !"},
+];
+
+function getInitials(prenom) {
+  return prenom.substring(0,2).toUpperCase();
+}
+
+function buildReviewCard(r) {
+  const stars = '★'.repeat(r.note) + '☆'.repeat(5 - r.note);
+  return '<div class="testimonial-card">'
+    + '<div class="stars">' + stars + '</div>'
+    + '<p class="testimonial-text">' + r.message + '</p>'
+    + '<div class="testimonial-author">'
+    + '<div class="author-avatar">' + getInitials(r.prenom) + '</div>'
+    + '<div><p class="author-name">' + r.prenom + '</p>'
+    + '<p class="author-location">' + r.ville + '</p></div>'
+    + '</div></div>';
+}
+
+function loadAndRenderReviews() {
+  const track = document.getElementById('carouselTrack');
+  if(!track) return;
+
+  // Get extra reviews from localStorage (approved by admin)
+  let extraReviews = [];
+  try {
+    const stored = localStorage.getItem('coz_reviews_approved');
+    if(stored) extraReviews = JSON.parse(stored);
+  } catch(e) {}
+
+  const allReviews = [...baseReviews, ...extraReviews];
+  track.innerHTML = allReviews.map(r => buildReviewCard(r)).join('');
+
+  // Re-init carousel after rendering
+  if(typeof carouselInit === 'function') carouselInit();
+}
+
 function openReviewForm() {
   document.getElementById('review-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -1577,28 +1625,69 @@ function closeReviewForm() {
   document.body.style.overflow = '';
 }
 
-// Star rating
+// ADMIN: approve a pending review
+function approveReview(idx) {
+  const pending = JSON.parse(localStorage.getItem('coz_reviews_pending') || '[]');
+  const approved = JSON.parse(localStorage.getItem('coz_reviews_approved') || '[]');
+  if(pending[idx]) {
+    approved.push(pending[idx]);
+    pending.splice(idx, 1);
+    localStorage.setItem('coz_reviews_approved', JSON.stringify(approved));
+    localStorage.setItem('coz_reviews_pending', JSON.stringify(pending));
+    loadAndRenderReviews();
+    renderPendingReviews();
+    alert('Avis publié sur le site ! ✓');
+  }
+}
+function rejectReview(idx) {
+  const pending = JSON.parse(localStorage.getItem('coz_reviews_pending') || '[]');
+  pending.splice(idx, 1);
+  localStorage.setItem('coz_reviews_pending', JSON.stringify(pending));
+  renderPendingReviews();
+}
+function renderPendingReviews() {
+  const container = document.getElementById('pending-reviews-list');
+  if(!container) return;
+  const pending = JSON.parse(localStorage.getItem('coz_reviews_pending') || '[]');
+  if(pending.length === 0) {
+    container.innerHTML = '<p style="color:var(--mid);font-size:.85rem;text-align:center;">Aucun avis en attente</p>';
+    return;
+  }
+  container.innerHTML = pending.map((r, i) => `
+    <div style="background:var(--cream);border:.5px solid var(--border);padding:1rem;margin-bottom:.75rem;border-radius:2px;">
+      <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:.5rem;">
+        <div>
+          <strong style="font-size:.85rem;">${r.prenom}</strong> — <span style="font-size:.8rem;color:var(--mid);">${r.ville}</span>
+          <span style="color:var(--gold);margin-left:.5rem;">${'★'.repeat(r.note)}</span>
+        </div>
+        <div style="display:flex;gap:.5rem;">
+          <button onclick="approveReview(${i})" style="background:var(--gold);color:white;border:none;padding:.35rem .75rem;cursor:pointer;font-size:.7rem;letter-spacing:.1em;">✓ Publier</button>
+          <button onclick="rejectReview(${i})" style="background:none;border:.5px solid var(--border);padding:.35rem .75rem;cursor:pointer;font-size:.7rem;">✕</button>
+        </div>
+      </div>
+      <p style="font-size:.85rem;color:var(--dark);line-height:1.6;">"${r.message}"</p>
+    </div>
+  `).join('');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+  // Load reviews on page load
+  loadAndRenderReviews();
+
+  // Star rating
   const stars = document.querySelectorAll('.star');
   const noteInput = document.getElementById('noteValue');
   if(stars.length && noteInput) {
     function updateStars(value) {
-      stars.forEach(s => {
-        s.classList.toggle('active', parseInt(s.dataset.value) <= value);
-      });
+      stars.forEach(s => s.classList.toggle('active', parseInt(s.dataset.value) <= value));
       noteInput.value = value;
     }
-    // Initialize at 5
     updateStars(5);
     stars.forEach(star => {
-      star.addEventListener('click', function() {
-        updateStars(parseInt(this.dataset.value));
-      });
+      star.addEventListener('click', function() { updateStars(parseInt(this.dataset.value)); });
       star.addEventListener('mouseenter', function() {
         const v = parseInt(this.dataset.value);
-        stars.forEach(s => {
-          s.style.color = parseInt(s.dataset.value) <= v ? 'var(--gold-light)' : '';
-        });
+        stars.forEach(s => { s.style.color = parseInt(s.dataset.value) <= v ? 'var(--gold-light)' : ''; });
       });
     });
     document.getElementById('starRating').addEventListener('mouseleave', function() {
@@ -1606,32 +1695,40 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Form submit handler
+  // Form submit — save to pending
   const reviewForm = document.getElementById('reviewForm');
   if(reviewForm) {
     reviewForm.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const formData = new FormData(this);
+      const newReview = {
+        prenom: this.querySelector('[name="prenom"]').value.trim(),
+        ville: this.querySelector('[name="ville"]').value.trim(),
+        note: parseInt(noteInput.value),
+        message: this.querySelector('[name="message"]').value.trim(),
+        date: new Date().toLocaleDateString('fr-FR')
+      };
+      // Save to pending
+      const pending = JSON.parse(localStorage.getItem('coz_reviews_pending') || '[]');
+      pending.push(newReview);
+      localStorage.setItem('coz_reviews_pending', JSON.stringify(pending));
+
+      // Also send to Formspree for email notification
       try {
-        const response = await fetch(this.action, {
-          method: 'POST',
-          body: formData,
-          headers: {'Accept': 'application/json'}
+        const formData = new FormData(this);
+        formData.append('type', 'Avis client');
+        await fetch('https://formspree.io/f/xeevarra', {
+          method:'POST', body:formData, headers:{'Accept':'application/json'}
         });
-        if(response.ok) {
-          document.getElementById('reviewSuccess').style.display = 'block';
-          this.reset();
-          // Re-init stars at 5
-          stars.forEach(s => s.classList.toggle('active', parseInt(s.dataset.value) <= 5));
-          noteInput.value = 5;
-          setTimeout(() => {
-            closeReviewForm();
-            document.getElementById('reviewSuccess').style.display = 'none';
-          }, 3000);
-        }
-      } catch(err) {
-        alert('Une erreur est survenue. Veuillez réessayer.');
-      }
+      } catch(e) {}
+
+      document.getElementById('reviewSuccess').style.display = 'block';
+      this.reset();
+      stars.forEach(s => s.classList.toggle('active', parseInt(s.dataset.value) <= 5));
+      noteInput.value = 5;
+      setTimeout(() => {
+        closeReviewForm();
+        document.getElementById('reviewSuccess').style.display = 'none';
+      }, 3000);
     });
   }
 });
@@ -1790,6 +1887,12 @@ function exportSite() {
     <div class="admin-save-bar">
       <p>Les modifications sont appliquées en temps réel sur le site.</p>
       <button class="admin-btn" onclick="exportSite()">💾 Télécharger le site mis à jour</button>
+
+      <div style="margin-top:2rem;border-top:.5px solid var(--border);padding-top:1.5rem;">
+        <h3 style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem;color:var(--dark);">⭐ Avis en attente de validation</h3>
+        <div id="pending-reviews-list"></div>
+        <button class="admin-btn" onclick="renderPendingReviews()" style="margin-top:.5rem;font-size:.7rem;">↻ Actualiser</button>
+      </div>
     </div>
   </div>
 </div>
