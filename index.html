@@ -269,6 +269,32 @@ footer nav ul li a:hover{color:var(--gold)}
 .star{transition:color .2s ease;cursor:pointer}
 .star.active{color:var(--gold)}
 .star:hover{color:var(--gold-light)}
+
+/* FAQ */
+.faq-item{border-bottom:.5px solid var(--border)}
+.faq-question{width:100%;background:none;border:none;padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:'Jost',sans-serif;font-size:.95rem;color:var(--dark);text-align:left;font-weight:400;transition:color .3s ease}
+.faq-question:hover{color:var(--gold)}
+.faq-question span:first-child{flex:1;padding-right:2rem}
+.faq-icon{font-size:1.4rem;color:var(--gold);font-weight:300;transition:transform .3s ease;flex-shrink:0;line-height:1}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.faq-answer.open{max-height:300px}
+.faq-answer p{padding:.25rem 0 1.5rem;font-size:.9rem;color:var(--mid);line-height:1.9;font-weight:300}
+
+/* BLOG */
+.blog-card{background:var(--cream);transition:all .4s ease;cursor:pointer}
+.blog-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(44,31,14,.1)}
+.blog-content{padding:1.75rem}
+.blog-category{font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:.75rem}
+.blog-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--dark);line-height:1.35;margin-bottom:.85rem}
+.blog-excerpt{font-size:.82rem;color:var(--mid);line-height:1.8;font-weight:300;margin-bottom:1.25rem}
+.blog-meta{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--mid)}
+.blog-link{color:var(--gold);text-decoration:none;letter-spacing:.1em;font-weight:500;transition:color .2s ease}
+.blog-link:hover{color:var(--dark)}
+@media(max-width:600px){
+  .blog-grid{grid-template-columns:1fr !important}
+  .faq-question{font-size:.85rem;padding:1.25rem 0}
+}
 @media(max-width:600px){
   .partner-grid-5{grid-template-columns:1fr 1fr !important}
   .partner-grid-2{grid-template-columns:1fr !important;gap:2.5rem !important}
@@ -595,6 +621,8 @@ select.admin-input{cursor:pointer;}
     <li><a href="#about" onclick="closeMenu()">À propos</a></li>
     <li><a href="#temoignages" onclick="closeMenu()">Avis</a></li>
     <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
+    <li><a href="#blog" onclick="closeMenu()">Blog</a></li>
     <li><a href="#partenaire" onclick="closeMenu()">Partenaire</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -623,7 +651,8 @@ select.admin-input{cursor:pointer;}
 
 <!-- STATS -->
 <div class="stats-bar">
-  <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">Références Olfazeta</div></div>
+  <div class="stat-item"><div class="stat-num" data-target="134">0</div><div class="stat-label">Références Olfazeta</div></div>
+  <div class="stat-item"><div class="stat-num" data-target="36">0</div><div class="stat-label">Clients satisfaits</div></div>
   <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Produits authentiques</div></div>
   <div class="stat-item"><div class="stat-num">48h</div><div class="stat-label">Livraison express</div></div>
 </div>
@@ -809,6 +838,159 @@ select.admin-input{cursor:pointer;}
   </div>
 </section>
 
+
+
+<!-- FAQ -->
+
+<!-- BLOG -->
+<section id="blog" style="padding:7rem 0;background:var(--white);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 3rem;">
+    <div class="section-header">
+      <p class="section-eyebrow">Conseils & inspirations</p>
+      <h2 class="section-title">Le <em>magazine</em></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem;" class="blog-grid">
+
+      <article class="blog-card">
+        <div class="blog-img-wrap">
+          <div style="background:linear-gradient(135deg,#2C1F0E,#B5854A);height:220px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:3rem;">🌿</span>
+          </div>
+        </div>
+        <div class="blog-content">
+          <p class="blog-category">Guide</p>
+          <h3 class="blog-title">Quelle alternative à Sauvage Dior en 2026 ?</h3>
+          <p class="blog-excerpt">Sauvage est le parfum masculin le plus vendu au monde. Découvrez notre alternative Olfazeta qui en capture l'essence à prix accessible.</p>
+          <div class="blog-meta">
+            <span>5 min de lecture</span>
+            <a href="#contact" class="blog-link">Découvrir →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-img-wrap">
+          <div style="background:linear-gradient(135deg,#1a0a1a,#8B4A8B);height:220px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:3rem;">🌸</span>
+          </div>
+        </div>
+        <div class="blog-content">
+          <p class="blog-category">Sélection</p>
+          <h3 class="blog-title">Top 5 parfums femme pour le printemps 2026</h3>
+          <p class="blog-excerpt">Floral, fruité, frais... Voici notre sélection des 5 fragrances féminines Olfazeta idéales pour la saison des beaux jours.</p>
+          <div class="blog-meta">
+            <span>4 min de lecture</span>
+            <a href="#contact" class="blog-link">Découvrir →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-img-wrap">
+          <div style="background:linear-gradient(135deg,#0a0a0a,#C9A96E);height:220px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:3rem;">✨</span>
+          </div>
+        </div>
+        <div class="blog-content">
+          <p class="blog-category">Expertise</p>
+          <h3 class="blog-title">Extrait de parfum vs Eau de parfum : quelle différence ?</h3>
+          <p class="blog-excerpt">Concentration, tenue, projection... On vous explique pourquoi les extraits de parfum Olfazeta tiennent 10h sur la peau.</p>
+          <div class="blog-meta">
+            <span>3 min de lecture</span>
+            <a href="#contact" class="blog-link">Découvrir →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding:7rem 0;background:var(--cream);">
+  <div style="max-width:800px;margin:0 auto;padding:0 3rem;">
+    <div class="section-header">
+      <p class="section-eyebrow">Questions fréquentes</p>
+      <h2 class="section-title">Tout ce que vous<br><em>voulez savoir</em></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div id="faq-list" style="margin-top:3rem;">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Comment passer une commande ?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Rien de plus simple : parcourez le catalogue, notez la référence du parfum qui vous intéresse et contactez-moi directement via WhatsApp ou le formulaire de contact. Je vous accompagne dans le choix et confirme votre commande personnellement.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Les parfums Olfazeta sont-ils de qualité ?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolument. Les parfums Olfazeta by Chogan sont des extraits de parfum fabriqués en Italie, avec une concentration en huiles essentielles de 30%. Ils tiennent en moyenne 8 à 12 heures sur la peau. Ce sont des créations originales inspirées des grandes maisons, non des contrefaçons.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Quelle est la différence entre un parfum standard et Luxury ?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Les parfums standards (35€ - 70ml) sont inspirés des grandes maisons populaires comme Dior, Chanel ou YSL. La collection Luxury (52€ - 50ml) est inspirée des maisons ultra-premium comme Tom Ford, Louis Vuitton, Creed ou Maison Francis Kurkdjian, avec des matières premières encore plus nobles.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Puis-je retourner ou échanger un parfum ?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Les parfums ouverts ne sont ni repris ni échangés, comme dans toute parfumerie. C'est pourquoi je vous conseille personnellement avant votre commande pour m'assurer que la fragrance correspond bien à vos goûts. N'hésitez pas à me décrire vos parfums habituels !</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Comment savoir quel parfum choisir ?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>C'est exactement là où j'interviens ! Contactez-moi via WhatsApp en me disant vos parfums préférés, l'occasion (quotidien, soirée, saison) et votre budget. Je vous propose une sélection personnalisée parmi les 134 références disponibles.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Y a-t-il un minimum de commande ?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Non, aucun minimum. Vous pouvez commander un seul parfum. Des frais de port peuvent s'appliquer selon le montant de la commande — contactez-moi pour en savoir plus.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Quels moyens de paiement sont acceptés ?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>J'accepte les virements bancaires, PayPal et les paiements via Lydia/Sumeria. Contactez-moi directement pour convenir du mode de paiement qui vous convient le mieux.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <section id="partenaire" style="background:linear-gradient(135deg,#0A0A0A 0%,#1A1208 60%,#2C1F0E 100%);color:#FAF6F0;padding:7rem 0;overflow:hidden;position:relative;">
   <div style="position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(201,169,110,.08) 0%,transparent 70%);pointer-events:none;"></div>
@@ -1837,6 +2019,55 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+
+// ── COMPTEUR ANIMÉ ──
+function animateCounters() {
+  const counters = document.querySelectorAll('.stat-num[data-target]');
+  counters.forEach(counter => {
+    const target = parseInt(counter.dataset.target);
+    const suffix = counter.dataset.target.includes('+') ? '+' : '';
+    let current = 0;
+    const increment = Math.ceil(target / 60);
+    const timer = setInterval(() => {
+      current += increment;
+      if(current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      counter.textContent = current + '+';
+    }, 25);
+  });
+}
+
+// Trigger when stats bar is visible
+const statsBar = document.querySelector('.stats-bar');
+if(statsBar) {
+  const observer = new IntersectionObserver((entries) => {
+    if(entries[0].isIntersecting) {
+      animateCounters();
+      observer.disconnect();
+    }
+  }, {threshold: 0.5});
+  observer.observe(statsBar);
+}
+
+// ── FAQ ──
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-answer').classList.remove('open');
+  });
+  // Open clicked if it was closed
+  if(!isOpen) {
+    item.classList.add('open');
+    answer.classList.add('open');
+  }
+}
 
 // ── EXPORT ──
 function exportSite() {
