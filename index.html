@@ -270,6 +270,17 @@ footer nav ul li a:hover{color:var(--gold)}
 .star.active{color:var(--gold)}
 .star:hover{color:var(--gold-light)}
 @media(max-width:600px){
+  .partner-grid-5{grid-template-columns:1fr 1fr !important}
+  .partner-grid-2{grid-template-columns:1fr !important;gap:2.5rem !important}
+  .partner-quote{padding:1.75rem !important}
+  #partenaire > div > div:first-child{margin-bottom:3rem !important}
+  /* PARTENAIRE MOBILE */
+  #partenaire{padding:4rem 0}
+  #partenaire > div{padding:0 1.5rem !important}
+  #partenaire .partner-grid-5{grid-template-columns:1fr 1fr !important}
+  #partenaire .partner-grid-2{grid-template-columns:1fr !important;gap:3rem !important}
+  #partenaire .partner-quote{padding:2rem 1.5rem !important}
+
   .review-box{padding:1.75rem 1.5rem}
 }
 @media(max-width:600px){
@@ -584,6 +595,7 @@ select.admin-input{cursor:pointer;}
     <li><a href="#about" onclick="closeMenu()">À propos</a></li>
     <li><a href="#temoignages" onclick="closeMenu()">Avis</a></li>
     <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    <li><a href="#partenaire" onclick="closeMenu()">Partenaire</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -794,6 +806,98 @@ select.admin-input{cursor:pointer;}
         <p id="form-msg" style="font-size:.8rem;color:var(--gold);margin-top:.5rem;display:none;">✓ Message envoyé ! Je reviens vers vous très vite.</p>
       </form>
     </div>
+  </div>
+</section>
+
+
+<section id="partenaire" style="background:linear-gradient(135deg,#0A0A0A 0%,#1A1208 60%,#2C1F0E 100%);color:#FAF6F0;padding:7rem 0;overflow:hidden;position:relative;">
+  <div style="position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(201,169,110,.08) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-150px;left:-150px;width:400px;height:400px;background:radial-gradient(circle,rgba(201,169,110,.05) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="max-width:1100px;margin:0 auto;padding:0 3rem;position:relative;z-index:1;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:5rem;">
+      <p style="font-size:.65rem;letter-spacing:.5em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.5rem;font-weight:500;">Opportunité</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.1;letter-spacing:-.02em;margin-bottom:2rem;">Transformez votre passion pour les parfums<br><em style="color:#C9A96E;">en revenu complémentaire</em></h2>
+      <div style="width:40px;height:.5px;background:#C9A96E;margin:0 auto 2rem;"></div>
+      <p style="font-size:1rem;line-height:1.9;color:rgba(250,246,240,.7);max-width:600px;margin:0 auto;font-weight:300;">Vous aimez les parfums, le contact humain et les recommandations personnalisées ? Découvrez comment rejoindre l'aventure Coz Fragrances et développer votre propre clientèle à votre rythme.</p>
+    </div>
+
+    <!-- Pourquoi -->
+    <div style="margin-bottom:5rem;">
+      <p style="font-size:.65rem;letter-spacing:.4em;text-transform:uppercase;color:#C9A96E;margin-bottom:3rem;text-align:center;font-weight:500;">Pourquoi devenir partenaire ?</p>
+      <div class="partner-grid-5" style="display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;">
+        <div style="text-align:center;padding:2rem 1rem;border:.5px solid rgba(201,169,110,.2);">
+          <div style="font-size:1.8rem;margin-bottom:1rem;">⏱</div>
+          <p style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:.75rem;font-weight:500;">Activité flexible</p>
+          <p style="font-size:.8rem;color:rgba(250,246,240,.6);line-height:1.7;">À votre rythme, selon vos disponibilités</p>
+        </div>
+        <div style="text-align:center;padding:2rem 1rem;border:.5px solid rgba(201,169,110,.2);">
+          <div style="font-size:1.8rem;margin-bottom:1rem;">💶</div>
+          <p style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:.75rem;font-weight:500;">Revenu complémentaire</p>
+          <p style="font-size:.8rem;color:rgba(250,246,240,.6);line-height:1.7;">Commissions attractives sur chaque vente</p>
+        </div>
+        <div style="text-align:center;padding:2rem 1rem;border:.5px solid rgba(201,169,110,.2);">
+          <div style="font-size:1.8rem;margin-bottom:1rem;">🌸</div>
+          <p style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:.75rem;font-weight:500;">+130 fragrances</p>
+          <p style="font-size:.8rem;color:rgba(250,246,240,.6);line-height:1.7;">Un catalogue riche pour tous les profils</p>
+        </div>
+        <div style="text-align:center;padding:2rem 1rem;border:.5px solid rgba(201,169,110,.2);">
+          <div style="font-size:1.8rem;margin-bottom:1rem;">🤝</div>
+          <p style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:.75rem;font-weight:500;">Accompagnement</p>
+          <p style="font-size:.8rem;color:rgba(250,246,240,.6);line-height:1.7;">Suivi personnalisé à chaque étape</p>
+        </div>
+        <div style="text-align:center;padding:2rem 1rem;border:.5px solid rgba(201,169,110,.2);">
+          <div style="font-size:1.8rem;margin-bottom:1rem;">✨</div>
+          <p style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:.75rem;font-weight:500;">Sans expérience</p>
+          <p style="font-size:.8rem;color:rgba(250,246,240,.6);line-height:1.7;">Aucun prérequis nécessaire</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- À qui + Comment -->
+    <div class="partner-grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:5rem;">
+      <div>
+        <p style="font-size:.65rem;letter-spacing:.4em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.5rem;font-weight:500;">À qui s'adresse cette opportunité ?</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;margin-bottom:2rem;line-height:1.2;">Une opportunité<br><em style="color:#C9A96E;">pour tous</em></h3>
+        <div>
+          <div style="display:flex;align-items:center;gap:1rem;padding:.85rem 0;border-bottom:.5px solid rgba(201,169,110,.15);"><span style="color:#C9A96E;">—</span><span style="font-size:.9rem;color:rgba(250,246,240,.8);">Passionnés de parfums</span></div>
+          <div style="display:flex;align-items:center;gap:1rem;padding:.85rem 0;border-bottom:.5px solid rgba(201,169,110,.15);"><span style="color:#C9A96E;">—</span><span style="font-size:.9rem;color:rgba(250,246,240,.8);">Personnes souhaitant un complément de revenu</span></div>
+          <div style="display:flex;align-items:center;gap:1rem;padding:.85rem 0;border-bottom:.5px solid rgba(201,169,110,.15);"><span style="color:#C9A96E;">—</span><span style="font-size:.9rem;color:rgba(250,246,240,.8);">Créateurs de contenu</span></div>
+          <div style="display:flex;align-items:center;gap:1rem;padding:.85rem 0;border-bottom:.5px solid rgba(201,169,110,.15);"><span style="color:#C9A96E;">—</span><span style="font-size:.9rem;color:rgba(250,246,240,.8);">Commerciaux ou indépendants</span></div>
+          <div style="display:flex;align-items:center;gap:1rem;padding:.85rem 0;"><span style="color:#C9A96E;">—</span><span style="font-size:.9rem;color:rgba(250,246,240,.8);">Étudiants ou salariés motivés</span></div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:.65rem;letter-spacing:.4em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.5rem;font-weight:500;">Comment ça fonctionne ?</p>
+        <div style="display:flex;flex-direction:column;gap:1.5rem;">
+          <div style="display:flex;gap:1.5rem;align-items:flex-start;"><div style="width:36px;height:36px;border:.5px solid #C9A96E;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#C9A96E;">1</div><div><p style="font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#FAF6F0;margin-bottom:.35rem;">Découverte du concept</p><p style="font-size:.8rem;color:rgba(250,246,240,.55);line-height:1.7;">On échange sur votre profil et vos objectifs</p></div></div>
+          <div style="display:flex;gap:1.5rem;align-items:flex-start;"><div style="width:36px;height:36px;border:.5px solid #C9A96E;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#C9A96E;">2</div><div><p style="font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#FAF6F0;margin-bottom:.35rem;">Création de votre compte partenaire</p><p style="font-size:.8rem;color:rgba(250,246,240,.55);line-height:1.7;">Inscription simple et rapide en ligne</p></div></div>
+          <div style="display:flex;gap:1.5rem;align-items:flex-start;"><div style="width:36px;height:36px;border:.5px solid #C9A96E;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#C9A96E;">3</div><div><p style="font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#FAF6F0;margin-bottom:.35rem;">Formation & accompagnement</p><p style="font-size:.8rem;color:rgba(250,246,240,.55);line-height:1.7;">Ressources, conseils et suivi personnalisé</p></div></div>
+          <div style="display:flex;gap:1.5rem;align-items:flex-start;"><div style="width:36px;height:36px;border:.5px solid #C9A96E;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#C9A96E;">4</div><div><p style="font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#FAF6F0;margin-bottom:.35rem;">Développement de votre clientèle</p><p style="font-size:.8rem;color:rgba(250,246,240,.55);line-height:1.7;">Construisez votre réseau à votre rythme</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Citation -->
+    <div class="partner-quote" style="background:rgba(201,169,110,.06);border:.5px solid rgba(201,169,110,.2);padding:3rem;margin-bottom:5rem;position:relative;">
+      <div style="position:absolute;top:-1px;left:3rem;width:60px;height:1px;background:#C9A96E;"></div>
+      <p style="font-size:.65rem;letter-spacing:.4em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.5rem;font-weight:500;">Mon expérience</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;line-height:1.8;color:rgba(250,246,240,.85);font-style:italic;">"Je m'appelle Corentin, fondateur de Coz Fragrances. J'ai commencé cette activité avec l'envie de partager ma passion pour les parfums tout en créant une source de revenus complémentaire. Aujourd'hui, j'accompagne les personnes qui souhaitent se lancer sérieusement et durablement."</p>
+      <div style="display:flex;align-items:center;gap:1rem;margin-top:2rem;">
+        <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#C9A96E,#A8894F);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;color:white;font-size:1rem;">C</div>
+        <div><p style="font-size:.85rem;font-weight:500;color:#FAF6F0;">Corentin Lehay</p><p style="font-size:.75rem;color:#C9A96E;letter-spacing:.1em;text-transform:uppercase;">Fondateur · Coz Fragrances</p></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;">
+      <p style="font-size:.65rem;letter-spacing:.5em;text-transform:uppercase;color:#C9A96E;margin-bottom:1.5rem;font-weight:500;">Prêt à en savoir plus ?</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;color:#FAF6F0;margin-bottom:1.5rem;line-height:1.2;">Échangeons ensemble sur votre projet<br><em style="color:#C9A96E;">et voyons si c'est fait pour vous</em></h3>
+      <p style="font-size:.9rem;color:rgba(250,246,240,.6);margin-bottom:2.5rem;line-height:1.8;">Découvrons si cette opportunité correspond à vos objectifs.</p>
+      <a href="https://www.chogangroupspa.com/registration_consultant/CORF7CE48" target="_blank" rel="noopener" style="display:inline-block;padding:1.2rem 3rem;background:linear-gradient(135deg,#C9A96E 0%,#A8894F 100%);color:white;font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;text-decoration:none;font-family:'Jost',sans-serif;font-weight:500;box-shadow:0 10px 30px rgba(201,169,110,.3);">Découvrir l'opportunité →</a>
+    </div>
+
   </div>
 </section>
 
