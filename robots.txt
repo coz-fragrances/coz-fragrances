@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://coz-fragrances.fr/sitemap.xml

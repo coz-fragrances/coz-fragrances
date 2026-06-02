@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232C1F0E'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='60' fill='%23C9A96E' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- SEO PRIMARY -->
@@ -291,6 +292,56 @@ footer nav ul li a:hover{color:var(--gold)}
 .blog-meta{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--mid)}
 .blog-link{color:var(--gold);text-decoration:none;letter-spacing:.1em;font-weight:500;transition:color .2s ease}
 .blog-link:hover{color:var(--dark)}
+
+/* ARTICLE MODAL */
+.article-modal{display:none;position:fixed;inset:0;z-index:9600;align-items:flex-start;justify-content:center;padding:0;overflow-y:auto}
+.article-modal.open{display:flex}
+.article-overlay{position:fixed;inset:0;background:rgba(10,10,10,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.article-box{position:relative;background:var(--white);max-width:760px;width:100%;margin:3rem 1rem;padding:0;z-index:1;box-shadow:0 30px 90px rgba(0,0,0,.35);animation:fadeUp .4s ease;border-radius:2px;overflow:hidden}
+.article-close{position:absolute;top:1.25rem;right:1.25rem;background:rgba(255,255,255,.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.1rem;cursor:pointer;color:var(--dark);z-index:5;display:flex;align-items:center;justify-content:center;transition:all .2s ease;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.article-close:hover{background:var(--dark);color:white}
+.article-hero{height:200px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.article-body{padding:3rem}
+.article-cat{font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1rem}
+.article-body h1{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;line-height:1.2;color:var(--dark);margin-bottom:1rem;letter-spacing:-.01em}
+.article-date{font-size:.78rem;color:var(--mid);margin-bottom:2rem;padding-bottom:2rem;border-bottom:.5px solid var(--border)}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--dark);margin:2rem 0 1rem}
+.article-body p{font-size:.92rem;line-height:1.9;color:var(--mid);margin-bottom:1.25rem;font-weight:300}
+.article-body strong{color:var(--dark);font-weight:500}
+.article-body ul{margin:0 0 1.5rem;padding-left:0;list-style:none}
+.article-body li{font-size:.92rem;line-height:1.8;color:var(--mid);margin-bottom:.85rem;padding-left:1.5rem;position:relative;font-weight:300}
+.article-body li::before{content:'—';position:absolute;left:0;color:var(--gold)}
+.article-cta{background:var(--cream);padding:1.75rem;margin-top:2rem;text-align:center;border:.5px solid var(--border)}
+.article-cta p{margin-bottom:1rem;font-size:.9rem;color:var(--dark)}
+.article-product-ref{display:inline-block;background:var(--gold);color:white;padding:.3rem .85rem;font-size:.75rem;letter-spacing:.1em;margin:0 .25rem .5rem 0;border-radius:2px}
+
+/* NEWSLETTER POPUP */
+.newsletter-popup{display:none;position:fixed;inset:0;z-index:9700;align-items:center;justify-content:center;padding:1rem}
+.newsletter-popup.open{display:flex}
+.newsletter-overlay{position:fixed;inset:0;background:rgba(10,10,10,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.newsletter-box{position:relative;background:var(--cream);max-width:420px;width:100%;padding:2.5rem;z-index:1;box-shadow:0 30px 90px rgba(0,0,0,.35);animation:fadeUp .4s ease;border-radius:2px}
+.newsletter-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.1rem;cursor:pointer;color:var(--mid);width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .2s ease}
+.newsletter-close:hover{background:rgba(0,0,0,.05)}
+
+/* COUPS DE COEUR */
+.coup-card{background:rgba(250,246,240,.05);border:.5px solid rgba(201,169,110,.2);padding:0;transition:all .4s ease;cursor:pointer;overflow:hidden}
+.coup-card:hover{transform:translateY(-8px);border-color:var(--gold)}
+.coup-card .coup-img{height:240px;background:var(--white);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.coup-card .coup-img img{width:100%;height:100%;object-fit:contain;transition:transform .6s ease}
+.coup-card:hover .coup-img img{transform:scale(1.05)}
+.coup-info{padding:1.5rem;text-align:center}
+.coup-ref{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;font-weight:500}
+.coup-inspired{font-size:.85rem;color:rgba(250,246,240,.75);font-style:italic;margin-bottom:.75rem}
+.coup-price{font-size:1rem;color:var(--gold);font-weight:500}
+@media(max-width:600px){
+  #coupsGrid{grid-template-columns:1fr !important;gap:1.5rem !important}
+}
+@media(max-width:600px){
+  .article-box{margin:0;min-height:100vh}
+  .article-body{padding:2rem 1.5rem}
+  .article-body h1{font-size:1.7rem}
+  .article-hero{height:150px;font-size:3rem}
+}
 @media(max-width:600px){
   .blog-grid{grid-template-columns:1fr !important}
   .faq-question{font-size:.85rem;padding:1.25rem 0}
@@ -853,7 +904,7 @@ select.admin-input{cursor:pointer;}
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem;" class="blog-grid">
 
-      <article class="blog-card">
+      <article class="blog-card" onclick="openArticle(1)">
         <div class="blog-img-wrap">
           <div style="background:linear-gradient(135deg,#2C1F0E,#B5854A);height:220px;display:flex;align-items:center;justify-content:center;">
             <span style="font-size:3rem;">🌿</span>
@@ -865,12 +916,12 @@ select.admin-input{cursor:pointer;}
           <p class="blog-excerpt">Sauvage est le parfum masculin le plus vendu au monde. Découvrez notre alternative Olfazeta qui en capture l'essence à prix accessible.</p>
           <div class="blog-meta">
             <span>5 min de lecture</span>
-            <a href="#contact" class="blog-link">Découvrir →</a>
+            <span class="blog-link">Lire l'article →</span>
           </div>
         </div>
       </article>
 
-      <article class="blog-card">
+      <article class="blog-card" onclick="openArticle(2)">
         <div class="blog-img-wrap">
           <div style="background:linear-gradient(135deg,#1a0a1a,#8B4A8B);height:220px;display:flex;align-items:center;justify-content:center;">
             <span style="font-size:3rem;">🌸</span>
@@ -882,12 +933,12 @@ select.admin-input{cursor:pointer;}
           <p class="blog-excerpt">Floral, fruité, frais... Voici notre sélection des 5 fragrances féminines Olfazeta idéales pour la saison des beaux jours.</p>
           <div class="blog-meta">
             <span>4 min de lecture</span>
-            <a href="#contact" class="blog-link">Découvrir →</a>
+            <span class="blog-link">Lire l'article →</span>
           </div>
         </div>
       </article>
 
-      <article class="blog-card">
+      <article class="blog-card" onclick="openArticle(3)">
         <div class="blog-img-wrap">
           <div style="background:linear-gradient(135deg,#0a0a0a,#C9A96E);height:220px;display:flex;align-items:center;justify-content:center;">
             <span style="font-size:3rem;">✨</span>
@@ -899,12 +950,27 @@ select.admin-input{cursor:pointer;}
           <p class="blog-excerpt">Concentration, tenue, projection... On vous explique pourquoi les extraits de parfum Olfazeta tiennent 10h sur la peau.</p>
           <div class="blog-meta">
             <span>3 min de lecture</span>
-            <a href="#contact" class="blog-link">Découvrir →</a>
+            <span class="blog-link">Lire l'article →</span>
           </div>
         </div>
       </article>
 
     </div>
+  </div>
+</section>
+
+
+<!-- COUPS DE COEUR -->
+<section id="coups-de-coeur" style="padding:6rem 0;background:linear-gradient(135deg,#2C1F0E 0%,#3D2B12 100%);color:var(--cream);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 3rem;">
+    <div class="section-header">
+      <p class="section-eyebrow" style="color:var(--gold);">Sélection du moment</p>
+      <h2 class="section-title" style="color:var(--cream);">Mes coups de <em style="color:var(--gold);">cœur</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <p style="text-align:center;color:rgba(250,246,240,.6);max-width:500px;margin:1.5rem auto 0;font-size:.9rem;line-height:1.8;">Les fragrances que je recommande particulièrement en ce moment — testées et approuvées.</p>
+
+    <div id="coupsGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem;"></div>
   </div>
 </section>
 
@@ -1083,9 +1149,72 @@ select.admin-input{cursor:pointer;}
   </div>
 </section>
 
+
+<!-- ARTICLE MODAL -->
+<div id="article-modal" class="article-modal">
+  <div class="article-overlay" onclick="closeArticle()"></div>
+  <div class="article-box">
+    <button class="article-close" onclick="closeArticle()">✕</button>
+    <div id="article-content"></div>
+  </div>
+</div>
+
+
+<!-- POPUP NEWSLETTER -->
+<div id="newsletter-popup" class="newsletter-popup">
+  <div class="newsletter-overlay" onclick="closeNewsletter()"></div>
+  <div class="newsletter-box">
+    <button class="newsletter-close" onclick="closeNewsletter()">✕</button>
+    <div style="font-size:2rem;margin-bottom:1rem;">🌸</div>
+    <p class="section-eyebrow" style="text-align:center;">Coz Fragrances</p>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;text-align:center;margin-bottom:.75rem;line-height:1.2;">Restez informé des <em style="color:var(--gold);">nouveautés</em></h3>
+    <p style="text-align:center;font-size:.85rem;color:var(--mid);margin-bottom:1.75rem;line-height:1.7;">Recevez en avant-première les nouvelles fragrances et les offres exclusives.</p>
+    <form id="newsletterForm" action="https://formspree.io/f/xeevarra" method="POST">
+      <input type="hidden" name="type" value="Inscription newsletter">
+      <input type="email" name="email" required class="form-input" placeholder="Votre adresse email" style="margin-bottom:1rem;text-align:center;">
+      <button type="submit" class="btn-primary" style="width:100%;border:none;cursor:pointer;font-family:'Jost',sans-serif;">Je m'inscris</button>
+      <p id="newsletterSuccess" style="display:none;text-align:center;margin-top:1rem;color:var(--gold);font-size:.85rem;">✓ Merci ! Vous êtes bien inscrit.</p>
+    </form>
+    <p style="text-align:center;font-size:.7rem;color:var(--mid);margin-top:1rem;opacity:.7;">Pas de spam, désinscription à tout moment.</p>
+  </div>
+</div>
+
+
+<!-- MENTIONS LEGALES MODAL -->
+<div id="mentions-modal" class="article-modal">
+  <div class="article-overlay" onclick="closeMentions()"></div>
+  <div class="article-box">
+    <button class="article-close" onclick="closeMentions()">✕</button>
+    <div class="article-body">
+      <p class="article-cat">Informations</p>
+      <h1>Mentions légales</h1>
+      <div class="article-date">Coz Fragrances</div>
+
+      <h2>Éditeur du site</h2>
+      <p>Le site <strong>coz-fragrances.fr</strong> est édité par Corentin Lehay, distributeur indépendant agréé Chogan Group S.p.A.<br>
+      Contact : Corentin.lehay@gmail.com · 06 48 41 89 14</p>
+
+      <h2>Activité</h2>
+      <p>Coz Fragrances est un distributeur indépendant des produits Olfazeta by Chogan. Les parfums proposés sont des créations originales fabriquées par Chogan Group S.p.A. en Italie.</p>
+
+      <h2>Hébergement</h2>
+      <p>Ce site est hébergé par Netlify Inc., 512 2nd Street, San Francisco, CA 94107, États-Unis.</p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>Les marques citées (Dior, Chanel, YSL, Tom Ford, Creed, etc.) sont la propriété de leurs détenteurs respectifs. Elles sont mentionnées uniquement à titre de référence olfactive. Les parfums Olfazeta by Chogan sont des créations originales inspirées de ces fragrances, et ne sont en aucun cas des copies ou contrefaçons.</p>
+
+      <h2>Données personnelles</h2>
+      <p>Les informations collectées via les formulaires de contact et d'avis sont utilisées uniquement pour traiter vos demandes. Elles ne sont jamais revendues à des tiers. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en nous contactant par email.</p>
+
+      <h2>Cookies</h2>
+      <p>Ce site n'utilise pas de cookies de suivi publicitaire. Seules des données techniques nécessaires au bon fonctionnement du site peuvent être stockées localement dans votre navigateur.</p>
+    </div>
+  </div>
+</div>
+
 <footer>
   <a href="#accueil" class="logo">Coz <span style="color:var(--gold)">Fragrances</span></a>
-  <p>© 2025 Coz Fragrances · Distributeur officiel Chogan · Olfazeta</p>
+  <p>© 2025 Coz Fragrances · Distributeur officiel Chogan · Olfazeta · <a href="#" onclick="openMentions();return false;" style="color:inherit;text-decoration:underline;">Mentions légales</a></p>
   <p style="font-size:.6rem;opacity:.5;margin-top:.75rem;text-align:center;line-height:1.6;">Les marques citées (Dior, Chanel, YSL, Tom Ford, Valentino, Prada, etc.) sont la propriété de leurs détenteurs respectifs. Les parfums Olfazeta by Chogan sont des créations originales inspirées de ces fragrances, et non des copies ou contrefaçons.</p>
   <nav><ul>
     <li><a href="#accueil">Accueil</a></li>
@@ -2067,6 +2196,202 @@ function toggleFaq(btn) {
     item.classList.add('open');
     answer.classList.add('open');
   }
+}
+
+
+// ── ARTICLES BLOG ──
+const articles = {
+  1: {
+    emoji: '🌿',
+    gradient: 'linear-gradient(135deg,#2C1F0E,#B5854A)',
+    category: 'Guide',
+    title: "Quelle alternative à Sauvage Dior en 2026 ?",
+    date: "Publié en 2026 · 5 min de lecture",
+    body: `
+      <p>Depuis sa sortie, <strong>Sauvage de Dior</strong> s'est imposé comme le parfum masculin le plus vendu au monde. Son sillage frais, boisé et épicé séduit des millions d'hommes. Mais à plus de 100€ le flacon, beaucoup cherchent une alternative au même profil olfactif, à prix plus accessible.</p>
+
+      <h2>Le profil olfactif de Sauvage</h2>
+      <p>Sauvage est construit autour d'une signature reconnaissable : une ouverture fraîche de <strong>bergamote et poivre</strong>, un cœur de <strong>lavande et géranium</strong>, et un fond chaleureux d'<strong>ambroxan et cèdre</strong>. C'est ce contraste entre fraîcheur et chaleur qui le rend si polyvalent, aussi bien le jour qu'en soirée.</p>
+
+      <h2>Notre alternative Olfazeta</h2>
+      <p>Chez Coz Fragrances, la référence <strong>N°94</strong> est inspirée directement de Sauvage. Il s'agit d'un <strong>extrait de parfum</strong> (concentration 30%), bien plus concentré qu'une simple eau de toilette, ce qui lui donne une tenue de 8 à 12 heures sur la peau.</p>
+
+      <div class="article-cta">
+        <p>Envie de tester notre alternative à Sauvage ?</p>
+        <span class="article-product-ref">Olfazeta N°94</span>
+        <span class="article-product-ref">35€ · 70ml</span>
+        <p style="margin-top:1rem;margin-bottom:0;"><a href="#contact" class="blog-link" onclick="closeArticle()">Me contacter pour commander →</a></p>
+      </div>
+
+      <h2>Pourquoi choisir une alternative ?</h2>
+      <ul>
+        <li>Un budget divisé par 3 pour un profil olfactif très proche</li>
+        <li>Une concentration en extrait supérieure à beaucoup d'eaux de toilette du commerce</li>
+        <li>Un format 70ml généreux qui dure plusieurs mois</li>
+        <li>Fabrication italienne dans le respect des normes européennes</li>
+      </ul>
+
+      <p>Les parfums Olfazeta by Chogan ne sont pas des copies, mais des <strong>créations originales inspirées</strong> des grandes fragrances. L'objectif : vous offrir un plaisir olfactif équivalent sans le prix du marketing de luxe.</p>
+    `
+  },
+  2: {
+    emoji: '🌸',
+    gradient: 'linear-gradient(135deg,#1a0a1a,#8B4A8B)',
+    category: 'Sélection',
+    title: "Top 5 parfums femme pour le printemps 2026",
+    date: "Publié en 2026 · 4 min de lecture",
+    body: `
+      <p>Le printemps appelle des fragrances plus légères, florales et lumineuses. Voici notre sélection des <strong>5 parfums femme Olfazeta</strong> parfaits pour accompagner le retour des beaux jours.</p>
+
+      <h2>1. N°55 — inspiré de Black Opium (YSL)</h2>
+      <p>Un floral gourmand addictif, avec du <strong>café, de la vanille et de la fleur d'oranger</strong>. Idéal pour celles qui aiment les sillages qui ne passent pas inaperçus.</p>
+
+      <h2>2. N°51 — inspiré de Coco Mademoiselle (Chanel)</h2>
+      <p>L'élégance intemporelle : un chypre frais et pétillant aux notes d'<strong>orange, rose et patchouli</strong>. Une valeur sûre pour le quotidien comme pour les occasions.</p>
+
+      <h2>3. N°131 — inspiré de Good Girl (Carolina Herrera)</h2>
+      <p>Un floral oriental sophistiqué, mêlant <strong>jasmin, fève tonka et amande</strong>. Parfait pour une transition jour/soir.</p>
+
+      <h2>4. N°42 — inspiré de La Vie est Belle (Lancôme)</h2>
+      <p>Le bonheur en flacon : <strong>iris, praline et vanille</strong> pour une fragrance douce et réconfortante, très appréciée au printemps.</p>
+
+      <h2>5. N°89 — inspiré de Mon Paris (YSL)</h2>
+      <p>Un fruité-floral passionné aux notes de <strong>fraise, framboise et pivoine</strong>. Jeune, frais et romantique.</p>
+
+      <div class="article-cta">
+        <p>Une de ces fragrances vous tente ?</p>
+        <span class="article-product-ref">À partir de 35€</span>
+        <p style="margin-top:1rem;margin-bottom:0;"><a href="#catalogue" class="blog-link" onclick="closeArticle()">Voir le catalogue complet →</a></p>
+      </div>
+
+      <p>Besoin d'aide pour choisir ? Décrivez-moi vos parfums préférés et je vous orienterai vers la fragrance Olfazeta qui vous correspond le mieux.</p>
+    `
+  },
+  3: {
+    emoji: '✨',
+    gradient: 'linear-gradient(135deg,#0a0a0a,#C9A96E)',
+    category: 'Expertise',
+    title: "Extrait de parfum vs Eau de parfum : quelle différence ?",
+    date: "Publié en 2026 · 3 min de lecture",
+    body: `
+      <p>Vous avez sûrement déjà vu ces mentions sur les flacons : <strong>eau de toilette, eau de parfum, extrait de parfum</strong>. Mais que signifient-elles vraiment ? La différence se joue sur un élément clé : la <strong>concentration en huiles parfumées</strong>.</p>
+
+      <h2>Les différents niveaux de concentration</h2>
+      <ul>
+        <li><strong>Eau de Cologne</strong> : 3 à 5% — très léger, tient 2 à 3h</li>
+        <li><strong>Eau de Toilette</strong> : 5 à 15% — léger, tient 3 à 5h</li>
+        <li><strong>Eau de Parfum</strong> : 15 à 20% — soutenu, tient 5 à 8h</li>
+        <li><strong>Extrait de Parfum</strong> : 20 à 40% — intense, tient 8 à 12h</li>
+      </ul>
+
+      <h2>Pourquoi c'est important</h2>
+      <p>Plus la concentration est élevée, plus le parfum <strong>tient longtemps</strong> et plus son <strong>sillage</strong> (la traînée olfactive que vous laissez) est présent. Un extrait demande aussi moins d'applications : quelques gouttes suffisent pour toute la journée.</p>
+
+      <h2>Les parfums Olfazeta : des extraits</h2>
+      <p>C'est là que la collection Olfazeta se démarque. Tous nos parfums sont des <strong>extraits de parfum concentrés à 30%</strong>, fabriqués en Italie. Concrètement, cela signifie :</p>
+      <ul>
+        <li>Une tenue de 8 à 12 heures sur la peau</li>
+        <li>Un sillage généreux qui dure toute la journée</li>
+        <li>Un excellent rapport qualité-prix face aux eaux de parfum du commerce</li>
+      </ul>
+
+      <div class="article-cta">
+        <p>Découvrez la puissance d'un véritable extrait de parfum</p>
+        <span class="article-product-ref">134 références disponibles</span>
+        <p style="margin-top:1rem;margin-bottom:0;"><a href="#catalogue" class="blog-link" onclick="closeArticle()">Explorer le catalogue →</a></p>
+      </div>
+
+      <p>Pour un prix souvent inférieur à une eau de toilette de grande marque, vous obtenez une concentration digne des extraits les plus nobles. Le luxe olfactif, sans le superflu.</p>
+    `
+  }
+};
+
+function openArticle(id) {
+  const a = articles[id];
+  if(!a) return;
+  const content = document.getElementById('article-content');
+  content.innerHTML = '<div class="article-hero" style="background:' + a.gradient + ';">' + a.emoji + '</div>'
+    + '<div class="article-body">'
+    + '<p class="article-cat">' + a.category + '</p>'
+    + '<h1>' + a.title + '</h1>'
+    + '<p class="article-date">' + a.date + '</p>'
+    + a.body
+    + '</div>';
+  document.getElementById('article-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.querySelector('.article-box').scrollTop = 0;
+}
+
+function closeArticle() {
+  document.getElementById('article-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+
+// ── COUPS DE COEUR ──
+function renderCoupsDeCoeur() {
+  const grid = document.getElementById('coupsGrid');
+  if(!grid) return;
+  // Sélection : 3 bestsellers mis en avant
+  const selection = ['N°55', 'N°94', 'N°128'];
+  let out = '';
+  selection.forEach(ref => {
+    const p = products.find(x => x.ref === ref);
+    if(p) {
+      const idx = products.indexOf(p);
+      out += '<div class="coup-card" onclick="openModal(' + idx + ')">'
+        + '<div class="coup-img"><img src="' + p.img + '" alt="' + p.ref + '" loading="lazy"></div>'
+        + '<div class="coup-info">'
+        + '<p class="coup-ref">Olfazeta ' + p.ref + '</p>'
+        + '<p class="coup-inspired">' + p.inspired + '</p>'
+        + '<p class="coup-price">' + getPrice(p) + '</p>'
+        + '</div></div>';
+    }
+  });
+  grid.innerHTML = out;
+}
+
+// ── NEWSLETTER POPUP ──
+function openNewsletter() {
+  if(sessionStorage.getItem('newsletter_shown')) return;
+  document.getElementById('newsletter-popup').classList.add('open');
+  sessionStorage.setItem('newsletter_shown', '1');
+}
+function closeNewsletter() {
+  document.getElementById('newsletter-popup').classList.remove('open');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  renderCoupsDeCoeur();
+
+  // Show popup after 12 seconds
+  setTimeout(openNewsletter, 12000);
+
+  // Newsletter form
+  const nf = document.getElementById('newsletterForm');
+  if(nf) {
+    nf.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      try {
+        const fd = new FormData(this);
+        await fetch(this.action, {method:'POST', body:fd, headers:{'Accept':'application/json'}});
+        document.getElementById('newsletterSuccess').style.display = 'block';
+        this.reset();
+        setTimeout(closeNewsletter, 2500);
+      } catch(err) {}
+    });
+  }
+});
+
+
+function openMentions() {
+  document.getElementById('mentions-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.querySelector('#mentions-modal .article-box').scrollTop = 0;
+}
+function closeMentions() {
+  document.getElementById('mentions-modal').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 // ── EXPORT ──
