@@ -1293,11 +1293,11 @@ const products = [
   {ref:'N°133', notes:{tete:"Néroli, Ambrette",coeur:"Jasmin, Iris",fond:"Musc, Bois de santal"}, bestseller:true, genre:'femme', img:IMG_F, inspired:"Inspiré de Prada Paradoxe Prada"},
   {ref:'N°145', genre:'femme', img:IMG_F, inspired:"Inspiré de Devotion D&G"},
   {ref:'N°148W', genre:'femme', img:IMG_F, inspired:"Inspiré de Goddess Burberry (Divine Aura)"},
-  {ref:'N°93', prix:'52€', genre:'femme', img:IMG_F, inspired:"Inspiré de Aventus For Her Creed"},
-  {ref:'N°122', prix:'52€', genre:'femme', img:IMG_F, inspired:"Inspiré de Libre YSL"},
-  {ref:'N°131', notes:{tete:"Amande, Bergamote, Café",coeur:"Fleur d'oranger, Iris, Jasmin, Rose",fond:"Ambre, Fève tonka, Praliné, Vanille"}, bestseller:true, prix:'52€', genre:'femme', img:IMG_F, inspired:"Inspiré de Good Girl Carolina Herrera"},
-  {ref:'N°132', prix:'52€', genre:'femme', img:IMG_F, inspired:"Inspiré de My Way Armani"},
-  {ref:'N°109', prix:'52€', genre:'femme', img:IMG_F, inspired:"Inspiré de J'adore l'Or Dior"},
+  {ref:'N°93', prix:'57€', genre:'femme', img:IMG_F, inspired:"Inspiré de Aventus For Her Creed"},
+  {ref:'N°122', prix:'48€', genre:'femme', img:IMG_F, inspired:"Inspiré de Libre YSL"},
+  {ref:'N°131', notes:{tete:"Amande, Bergamote, Café",coeur:"Fleur d'oranger, Iris, Jasmin, Rose",fond:"Ambre, Fève tonka, Praliné, Vanille"}, bestseller:true, prix:'48€', genre:'femme', img:IMG_F, inspired:"Inspiré de Good Girl Carolina Herrera"},
+  {ref:'N°132', prix:'45€', genre:'femme', img:IMG_F, inspired:"Inspiré de My Way Armani"},
+  {ref:'N°109', prix:'45€', genre:'femme', img:IMG_F, inspired:"Inspiré de J'adore l'Or Dior"},
   {ref:'N°123', prix:'52€', genre:'femme', img:IMG_F, inspired:"Inspiré de Good Girl Gone Bad Kilian"},
   {ref:'N°161', notes:{tete:"Bergamote, Jasmin",coeur:"Jasmin, Iris",fond:"Vétiver, Musc, Vanille"}, bestseller:true, genre:'femme', img:IMG_F, inspired:"Inspiré de Born in Roma Intense Valentino"},
   // ── HOMME ──
@@ -1337,12 +1337,12 @@ const products = [
   {ref:'N°91', genre:'homme', img:IMG_H, inspired:"Inspiré de Chrome Azzaro"},
   {ref:'N°140', genre:'homme', img:IMG_H, inspired:"Inspiré de Eros Versace"},
   {ref:'N°147M', genre:'homme', img:IMG_H, inspired:"Inspiré de Bottled Absolu Hugo Boss (Dark Necar)"},
-  {ref:'N°60', prix:'52€', genre:'homme', img:IMG_H, inspired:"Inspiré de Millesime Imperial Creed"},
-  {ref:'N°68', prix:'52€', genre:'homme', img:IMG_H, inspired:"Inspiré de Aventus Creed"},
-  {ref:'N°94', prix:'52€', genre:'homme', img:IMG_H, inspired:"Inspiré de Sauvage Dior"},
-  {ref:'N°108', prix:'52€', genre:'homme', img:IMG_H, inspired:"Inspiré de Green Irish Tweed Creed"},
-  {ref:'N°113', prix:'52€', genre:'homme', img:IMG_H, inspired:"Inspiré de Sur la Route Louis Vuitton"},
-  {ref:'N°136', prix:'52€', genre:'homme', img:IMG_H, inspired:"Inspiré de Dior Homme Intense Dior"},
+  {ref:'N°60', prix:'48€', genre:'homme', img:IMG_H, inspired:"Inspiré de Millesime Imperial Creed"},
+  {ref:'N°68', prix:'57€', genre:'homme', img:IMG_H, inspired:"Inspiré de Aventus Creed"},
+  {ref:'N°94', prix:'48€', genre:'homme', img:IMG_H, inspired:"Inspiré de Sauvage Dior"},
+  {ref:'N°108', prix:'48€', genre:'homme', img:IMG_H, inspired:"Inspiré de Green Irish Tweed Creed"},
+  {ref:'N°113', prix:'57€', genre:'homme', img:IMG_H, inspired:"Inspiré de Sur la Route Louis Vuitton"},
+  {ref:'N°136', prix:'45€', genre:'homme', img:IMG_H, inspired:"Inspiré de Dior Homme Intense Dior"},
   {ref:'N°74', prix:'52€', genre:'homme', img:IMG_H, inspired:"Inspiré de Black Afgano Nasomatto"},
   {ref:'N°75', prix:'52€', genre:'homme', img:IMG_H, inspired:"Inspiré de X for Men Clive Christian"},
   // ── MIXTE ──
@@ -2333,7 +2333,7 @@ function renderCoupsDeCoeur() {
   const grid = document.getElementById('coupsGrid');
   if(!grid) return;
   // Sélection : 3 bestsellers mis en avant
-  const selection = ['N°55', 'N°94', 'N°128'];
+  const selection = ['N°133', 'N°52', 'N°128'];
   let out = '';
   selection.forEach(ref => {
     const p = products.find(x => x.ref === ref);
